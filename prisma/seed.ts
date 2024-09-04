@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 const events = [
 	{
@@ -253,7 +253,7 @@ const events = [
 ];
 
 async function main() {
-	console.log(`Start seeding ....`);
+	console.log(`Start seeding ...`);
 
 	for (const event of events) {
 		const result = await prisma.eventoEvent.upsert({
@@ -272,7 +272,7 @@ main()
 		await prisma.$disconnect();
 	})
 	.catch(async (e) => {
-		console.log(e);
+		console.error(e);
 		await prisma.$disconnect();
 		process.exit(1);
 	});
