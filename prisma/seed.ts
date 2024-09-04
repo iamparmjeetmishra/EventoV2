@@ -253,26 +253,26 @@ const events = [
 ];
 
 async function main() {
-	console.log(`Start seeding ...`);
+   console.log(`Start seeding ....`)
 
-	for (const event of events) {
-		const result = await prisma.eventoEvent.upsert({
-			where: { id: event.id },
-			update: {},
-			create: event,
-		});
-		console.log(`Created event with id: ${result.id}`);
-	}
+   for (const event of events) {
+      const result = await prisma.eventoEvent.upsert({
+         where: { id: event.id },
+         update: {},
+         create: event,
+      });
+      console.log(`Created event with id: ${result.id}`)
+   }
 
-	console.log(`Seeding finished.`);
+   console.log(`Seeding finished.`)
 }
 
 main()
-	.then(async () => {
-		await prisma.$disconnect();
-	})
-	.catch(async (e) => {
-		console.error(e);
-		await prisma.$disconnect();
-		process.exit(1);
-	});
+   .then(async () => {
+      await prisma.$disconnect()
+   })
+   .catch(async (e) => {
+      console.log(e)
+      await prisma.$disconnect()
+      process.exit(1)
+   })
